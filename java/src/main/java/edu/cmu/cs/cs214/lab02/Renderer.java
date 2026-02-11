@@ -3,17 +3,20 @@ package edu.cmu.cs.cs214.lab02;
 import edu.cmu.cs.cs214.lab02.shapes.*;
 
 public class Renderer {
-    public Rectangle rectangle;
-    
-    Renderer(Rectangle rectangle) {
-        this.rectangle = rectangle;
+    private Shape shape;
+
+    public Renderer(Shape shape) {
+        if (shape == null) {
+            throw new IllegalArgumentException("Shape cannot be null.");
+        }
+        this.shape = shape;
     }
 
-    void draw() {
-        double area = rectangle.getArea();
-
-        // assume implementation
-
-        System.out.println("Shape printed\n" + "Its area is " + area);
+    public void draw() {
+        double area = shape.getArea();
+        System.out.println(shape.getName() + " printed\nIts area is " + area);
+        double perimeter = shape.getPerimeter();
+        System.out.println(shape.getName() + " perimeter is " + perimeter);
     }
 }
+
